@@ -42,7 +42,7 @@
                                 <div id="clear-all" class="button">C</div>
                             </div>
                             <div>
-                                <button id="submitbtn" type="submit" class="submit-btn">Submit</button>
+                                <button id="btnSubmit" type="submit" class="submit-btn">Submit</button>
                                 <p class="action-left">3 try left</p>
                             </div>
                     </div>
@@ -55,16 +55,19 @@
         </div>
     </div>
     <script>
-        //generate PIN function
+
+        //Generate PIN function
         function generatePin(){
             var randomNumber = Math.round(Math.random()*2000 + 1000);
             document.getElementById('show-pin').value = randomNumber;
         }
-        // input pin numbers function
+
+        // Input PIN numbers function
         function putInput (btnNumber){
          document.getElementById('show-numbers').value += btnNumber;
         }
-        //backspace function
+
+        //Backspace function
         const numberInputArea = document.getElementById('show-numbers')
         const backSpaceBtn = document.getElementById('<');
         backSpaceBtn.addEventListener('click', () => {
@@ -73,24 +76,28 @@
         let addPin = '';
         for (let i = 0; i < showInputPinArr.length; i++) {
         addPin += showInputPinArr[i];
-    }
+        }
         numberInputArea.value = addPin;
-    })
-        // clear button function
+        })
+
+        //Clear button function
         document.getElementById('clear-all').addEventListener('click', function(){numberInputArea.value = ''
-    })
-       //submit button function
-        document.getElementById('submitbtn').addEventListener('click', function(){
-        if('show-pin'.value == 'show-numbers'.value){
-        console.log('✅ Pin Matched... Secret door is opening for you')
-    } 
-        else{
-        console.log('❌ Pin Did not Match, Please try again')
-    }
-    })
-  
+        })
 
-
+       //Submit button function
+        const showPin = document.getElementById('show-pin');
+        const showNumbers = document.getElementById('show-numbers');
+        const notify = document.querySelectorAll('.notify');
+        document.getElementById('btnSubmit').addEventListener('click', function () {
+            if (showPin.value == showNumbers.value) {
+                    notify[1].style.display = 'block'
+                    notify[0].style.display = 'none'
+                } else {
+                    notify[0].style.display = 'block'
+                    notify[1].style.display = 'none'
+                }
+                numberInputArea.value = '';
+            })
   
 
        
