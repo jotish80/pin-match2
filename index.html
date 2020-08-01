@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pin-generator half-width">
+                    <input id="show-pin" class="form-control" type="text">
+                    <button onclick="generatePin()" class="generate-btn">Generate Pin</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-section half-width">
+                    <input onclick="putInput()" id="show-numbers"  class="form-control" type="text">
+                    <div class="numbers">
+                        <div class="calc-body">
+                            <div class="calc-button-row">
+                              <div onclick="putInput(7)" class="button">7</div>
+                              <div onclick="putInput(8)" class="button">8</div>
+                              <div onclick="putInput(9)" class="button">9</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div onclick="putInput(4)" class="button">4</div>
+                              <div onclick="putInput(5)" class="button">5</div>
+                              <div onclick="putInput(6)" class="button">6</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div onclick="putInput(1)" class="button">1</div>
+                              <div onclick="putInput(2)" class="button">2</div>
+                              <div onclick="putInput(3)" class="button">3</div>
+                            </div>
+                            <div class="calc-button-row">
+                                <div class="back-space-btn" class="button"><</div>
+                                <div onclick="putInput(0)" class="button">0</div>
+                                <div onclick="putInput(C)" class="button">C</div>
+                            </div>
+                            <div>
+                                <button type="submit" class="submit-btn">Submit</button>
+                                <p class="action-left">3 try left</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notify-section">
+            <p class="notify">❌ Pin Didn't Match, Please try again</p>
+            <p class="notify">✅ Pin Matched... Secret door is opening for you</p>
+        </div>
+    </div>
+    <script>
+
+        function generatePin(){
+            var randomNumber = Math.round(Math.random()*2000 + 1000);
+            document.getElementById('show-pin').value = randomNumber;
+        }
+        // document.getElementById('generate').addEventListener('click', function(){
+        //      var showPin = document.getElementById('show-pin');
+        //      var currentPin = parseInt(showPin.value);
+        //       var generatePin = Math.floor(999 + Math.random ()* 2000);
+        //       showPin.value = generatePin;
+        // })
+        function putInput (btnNumber){
+         document.getElementById('show-numbers').value += btnNumber;
+         
+        }
+        // back space function
+        // function removeNumbers (){
+        //    document.getElementById ('show-number').value.length.pop();
+        // }
+        // function removeNumbers (){
+        // let inputPin = document.getElementById("show-numbers").value;
+        // let result = inputPin.substr(0, inputPin.length - 1);
+        // inputPin (result);
+       
+        // } 
+        // const ck = document.getElementById('calvalue').value;
+        // const final = ck.slice(0,-1);
+        // document.getElementById('calvalue').value=final;  
+
+        // document.getElementById('<').addEventListener('click', function(){
+        //     var showNumbers = document.getElementById('show-numbers').value;
+        //     var deleteNumbers = showNumbers.slice(0, -1);
+        //     showNumbers = deleteNumbers;
+        // })
+        const backSpaceBtn = document.querySelector('.back-space-btn');
+backSpaceBtn.addEventListener('click', () => {
+    let showInputPinArr = showInputNumbers.split('');
+    showInputPinArr.pop();
+    let addPin = '';
+    for (let i = 0; i < showInputPinArr.length; i++) {
+        addPin += showInputPinArr[i];
+    }
+    showInputNumbers = addPin;
+    numberInputArea.value = showInputNumbers;
+})
+      
+       
+
+       
+    </script>
+</body>
+</html>
