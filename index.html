@@ -18,7 +18,7 @@
             </div>
             <div class="col-md-6">
                 <div class="input-section half-width">
-                    <input onclick="putInput()" id="show-numbers"  class="form-control" type="text">
+                    <input onclick="putInput()" id="show-numbers" class="form-control" type="text">
                     <div class="numbers">
                         <div class="calc-body">
                             <div class="calc-button-row">
@@ -37,9 +37,9 @@
                               <div onclick="putInput(3)" class="button">3</div>
                             </div>
                             <div class="calc-button-row">
-                                <div class="back-space-btn" class="button"><</div>
+                                <div id="<"  class="button"><</div>
                                 <div onclick="putInput(0)" class="button">0</div>
-                                <div onclick="putInput(C)" class="button">C</div>
+                                <div id="C" class="button">C</div>
                             </div>
                             <div>
                                 <button type="submit" class="submit-btn">Submit</button>
@@ -70,38 +70,24 @@
          document.getElementById('show-numbers').value += btnNumber;
          
         }
-        // back space function
-        // function removeNumbers (){
-        //    document.getElementById ('show-number').value.length.pop();
-        // }
-        // function removeNumbers (){
-        // let inputPin = document.getElementById("show-numbers").value;
-        // let result = inputPin.substr(0, inputPin.length - 1);
-        // inputPin (result);
-       
-        // } 
-        // const ck = document.getElementById('calvalue').value;
-        // const final = ck.slice(0,-1);
-        // document.getElementById('calvalue').value=final;  
-
-        // document.getElementById('<').addEventListener('click', function(){
-        //     var showNumbers = document.getElementById('show-numbers').value;
-        //     var deleteNumbers = showNumbers.slice(0, -1);
-        //     showNumbers = deleteNumbers;
-        // })
-        const backSpaceBtn = document.querySelector('.back-space-btn');
-backSpaceBtn.addEventListener('click', () => {
-    let showInputPinArr = showInputNumbers.split('');
-    showInputPinArr.pop();
-    let addPin = '';
-    for (let i = 0; i < showInputPinArr.length; i++) {
+        const numberInputArea = document.getElementById('show-numbers')
+        const backSpaceBtn = document.getElementById('<');
+        backSpaceBtn.addEventListener('click', () => {
+        let showInputPinArr = numberInputArea.value.split('');
+        showInputPinArr.pop();
+        let addPin = '';
+        for (let i = 0; i < showInputPinArr.length; i++) {
         addPin += showInputPinArr[i];
     }
-    showInputNumbers = addPin;
-    numberInputArea.value = showInputNumbers;
-})
-      
-       
+        numberInputArea.value = addPin;
+    })
+    const InputArea = document.getElementById('show-numbers')
+        const cancelBtn = document.getElementById('C');
+        cancelBtn.addEventListener('click', function(){
+        let cancelInput = InputArea.value('');
+         
+    }) 
+  
 
        
     </script>
